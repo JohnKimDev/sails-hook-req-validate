@@ -13,7 +13,7 @@
 
 ## Ultimate Request Validator Hook for SailsJS
 ### **Over 160 Validator Types & 15 Converters + Flexible Usages & Custom Options and Configurations**
-This `sails-hook-req-validate` package uses sails' **req.allParams()**, [Sails Doc](https://sailsjs.com/documentation/reference/request-req/req-all-params). 
+This `sails-hook-req-validate` package uses **req.allParams()**, [Sails Doc](https://sailsjs.com/documentation/reference/request-req/req-all-params). 
 
 FYI, sails' req.allParams() returns the value of all parameters sent in the request which includes ***querystring*** and ***url path***. Which means passing parameters may be string type, use ***converter*** to convert the type to an expected value type. But please note that some validation types have build-in converters, check [validation type list](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) for more information.
 
