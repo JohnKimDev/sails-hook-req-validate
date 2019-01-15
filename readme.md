@@ -235,6 +235,13 @@ const params = req.validate([
   { 'type': { enum: ['user', 'admin', 'manager'], default: 'user' } }
 ]); 
 ```
+Multiple converters
+```javascript
+const params = req.validate({
+  'email': ['any', { converter: ['string', 'normalizeEmail'] }]
+}); 
+// not a good example but I hope you get the idea
+```
 Custom type validation
 ```javascript
 const params = req.validate({
