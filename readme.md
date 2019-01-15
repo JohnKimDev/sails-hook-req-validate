@@ -1,4 +1,3 @@
-
 [![Build Status](https://travis-ci.org/JohnKimDev/sails-hook-req-validate.svg?branch=master)](https://travis-ci.org/JohnKimDev/sails-hook-req-validate)
 
 ![Downloads](https://img.shields.io/npm/dm/sails-hook-req-validate.svg)
