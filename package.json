@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-req-validate",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "Ultimate Request Validator Hook for SailsJS",
   "keywords": [
     "sails-hook",
@@ -18,7 +18,7 @@
     "validate"
   ],
   "dependencies": {
-    "validator": "~10.10.0"
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "sails": ">=1.0.0",
