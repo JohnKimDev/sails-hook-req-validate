@@ -536,11 +536,7 @@ Converter                              | Description
 **normalizeEmail**                     | canonicalizes an email address. (This doesn't validate that the input is an email, if you want to validate the email use `email` validator beforehand).
 **lowercase**                          | convert to lower case
 **string**                             | convert to string
-**int**                                | convert the input string to an integer, or `NaN` if the input is 
-not an integer.
-
+**int**                                | convert the input string to an integer, or `NaN` if the input is not an integer.
 **float**                              | convert the input string to a float, or `NaN` if the input is not a float.
-
 **trim**                               | trim characters (whitespace by default) from both sides of the input.
 **uppercase**                          | convert to upper case
-
