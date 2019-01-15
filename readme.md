@@ -1,12 +1,11 @@
 [![Build Status](https://travis-ci.org/JohnKimDev/sails-hook-req-validate.svg?branch=master)](https://travis-ci.org/JohnKimDev/sails-hook-req-validate)
+![dependencies](https://img.shields.io/david/johnkimdev/sails-hook-req-validate.svg)
+![dev dependencies](https://img.shields.io/david/dev/johnkimdev/sails-hook-req-validate.svg)
 
 ![Downloads](https://img.shields.io/npm/dm/sails-hook-req-validate.svg)
 ![Downloads](https://img.shields.io/npm/dt/sails-hook-req-validate.svg)
 ![npm version](https://img.shields.io/npm/v/sails-hook-req-validate.svg)
 ![License](https://img.shields.io/npm/l/sails-hook-req-validate.svg)
-
-![dependencies](https://img.shields.io/david/johnkimdev/sails-hook-req-validate.svg)
-![dev dependencies](https://img.shields.io/david/dev/johnkimdev/sails-hook-req-validate.svg)
 
 ---
 
