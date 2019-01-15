@@ -312,12 +312,12 @@ You can use with any of validator combination above.
 `req.validate(<TYPE_VALIDATOR>, <OPTION>)` or `req.validate(<TYPE_VALIDATOR>, <OPTION>, <CALLBACK>)`
 ```javascript
 const params = req.validate('id', {
-  returnAllParams: false  // see below for more options
+  returnAllParams: false  // see options table for more information
 });
 ```
 ```javascript
 req.validate('id', {
-  returnAllParams: false  // see below for more options
+  returnAllParams: false  // see options table for more information
 },
 (data) => {
   sails.log.info(data);   // error or callback data
@@ -350,6 +350,23 @@ module.exports = {
   }
 };
 ```
+
+---
+
+## Options / Configurations
+
+Option                                  | Description
+--------------------------------------- | --------------------------------------
+**responseMethod**                      | ((function)) method/function to call when a validation error occurs<br><br>***default***: `res.badRequest`<br><br>@param errorOutput : output from `onErrorOutput` option
+**sendResponse**                        | ((boolean)) toggle the `responseMethod` call when a validation error occurs<br><br>***default***: `true`
+**usePromise**                          | ((boolean)) enable PROMISE response instead of callback<br><br>***default***: `false`
+**returnAllParams**                     | ((boolean)) if ther are more passing params than listed in the req.validate, you can choose to pass-though all or filter to only listed params.<br><br>***default***: `true`
+**onErrorOutput**                      | ((function)) when a validation error occurs, it will be called to generate the error output<br><br>***default***: see above config/validation.js example<br><br>@param `errMessage` ((string)): combined error message(s)<br>@param `invalidKeys` ((string[])): list of invalid param keys<br>@return : any form you want
+**requiredErrorMessage**              | ((function)) output message for param required error message<br><br>***default***: see above config/validation.js example<br><br>@param `keys` ((string \| string[])): list of invalid param key(s).<br>@return ((string)): formated error messgae as string type
+**formatErrorMessage**              | ((function)) output message for a validator format error message for param key<br><br>***default***: see above config/validation.js example<br><br>@param `key` ((string)): invalid param key.<br>@param `typeMessage` ((string)): type error message, see `message` for each type of the [validationType](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) file<br>@return ((string)): formated error messgae as string type
+**typeErrorMessage**              | ((function)) output message for a parm type error message<br><br>***default***: see above config/validation.js example<br><br>@param `key` ((string)): invalid param key.<br>@param `typeMessage` ((string)): type error message, see `message` for each type of the [validationType](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) file<br>@return ((string)): formated error messgae as string type
+**inputErrorMessage**              | ((function)) output message for a parm input error message<br><br>***default***: see above config/validation.js example<br><br>@param `key` ((string)): invalid param key.<br>@param `typeMessage` ((string)): type error message, see `message` for each type of the [validationType](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) file<br>@return ((string)): formated error messgae as string type
+**orInputErrorMessage**              | ((function)) output message for a parm input error message with OR opertation. The error message for each OR validation wil be combined<br><br>***default***: see above config/validation.js example<br><br>@param `orKey` ((string)): invalid OR param key. (ex: 'string\|email')<br>@param `orTypeMessage` ((string)): combined type error messages, see `message` for each type of the [validationType](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) file<br>@return ((string)): formated error messgae as string type
 
 ---
 
