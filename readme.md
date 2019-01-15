@@ -11,7 +11,7 @@
 
 ---
 
-## Ultimate Request Validator for SailsJS
+## Ultimate Request Validator Hook for SailsJS
 ### **Over 160 Validator Types & 15 Converters + Flexible Usages & Custom Options and Configurations**
 This `sails-hook-req-validate` package uses sails' ***req.allParams()***, [Sails Doc](https://sailsjs.com/documentation/reference/request-req/req-all-params). 
 
