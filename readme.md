@@ -10,8 +10,8 @@
 ---
 
 ## Ultimate Request Validator Hook for SailsJS
-### **Over 160 Validator Types & 15 Converters + Flexible Usages & Custom Options and Configurations**
-This `sails-hook-req-validate` package uses **req.allParams()**, [Sails Doc](https://sailsjs.com/documentation/reference/request-req/req-all-params). 
+### **Over 160 Validator Types & 17 Converters + Flexible Usages & Custom Options and Configurations**
+This `sails-hook-req-validate` package uses **req.allParams()** ([Sails Document](https://sailsjs.com/documentation/reference/request-req/req-all-params)). 
 
 FYI, sails' req.allParams() returns the value of all parameters sent in the request which includes ***querystring*** and ***url path***. Which means passing parameters may be string type, use ***converter*** to convert the type to an expected value type. But please note that some validation types have build-in converters, check [validation type list](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) for more information.
 
@@ -376,7 +376,7 @@ Validator                               | Description
 **magnetURI**                           | check if the string is a [magnet uri format](https://en.wikipedia.org/wiki/Magnet_URI_scheme).
 **email**                               | check if the string is an valid email address.
 **FQDN**                                | check if the string is a fully qualified domain name (e.g. domain.com)
-**float**                               | check if the string is a float.
+**float**                               | check if the string is a float.<br><br>***Built-In Converter: float***
 **hash**                                | check if the string is a hash of type algorithm.<br/><br/>Algorithm is one of `['md4', 'md5', 'sha1', 'sha256', 'sha384', 'sha512', 'ripemd128', 'ripemd160', 'tiger128', 'tiger160', 'tiger192', 'crc32', 'crc32b']`
 **hexColor**                            | check if the string is a hexadecimal color.
 **hexadecimal**                         | check if the string is a hexadecimal number.
@@ -393,8 +393,8 @@ Validator                               | Description
 **ISO31661Alpha2**                     | check if the string is a valid [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) officially assigned country code.
 **ISO31661Alpha3**                     | check if the string is a valid [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) officially assigned country code.
 **ISRC**                                | check if the string is a [ISRC](https://en.wikipedia.org/wiki/International_Standard_Recording_Code).
-**int**                                 | check if the string is an integer.
-**JSON**                                | check if the string is valid JSON (note: uses JSON.parse).
+**int**                                 | check if the string is an integer.<br><br>***Built-In Converter: int***
+**JSON**                                | check if the string is valid JSON(note: uses JSON.parse).<br><br>***Built-In Converter: JSON.parse***
 **JWT**                                 | check if the string is valid JWT token.
 **LatLong**                             | check if the string is a valid latitude-longitude coordinate in the format `lat,long` or `lat, long`.
 **lowercase**                           | check if the string is lowercase.
@@ -514,7 +514,7 @@ Validator                               | Description
 **postalCode-ZA**                       | check if the string is a postal code of ZA
 **postalCode-ZM**                       | check if the string is a postal code of ZM
 **surrogatePair**                       | check if the string contains any surrogate pairs chars.
-**string**                              | check if value is string. **BE CAUTIOUS** of using this type! May return invalid result. For the parameter values from a querystring and a URL path are always `STRING` type, using this validator type may have an unexpected result.
+**string**                              | check if value is string. **BE CAUTIOUS** of using this type! May return invalid result. For the parameter values from a querystring and a URL path are always `STRING` type, using this validator type may have an unexpected result.<br><br>***Built-In Converter: string***
 **URL**                                 | check if the string is an URL. allow protocols 'http', 'https', 'ftp'.
 **UUID**                                | check if the string is a UUID (version 3, 4 or 5).
 **UUIDv3**                              | check if the string is a UUID version 3
@@ -534,8 +534,10 @@ Converter                              | Description
 **date**                               | convert the input string to a date, or `null` if the input is not a date.
 **escape**                             | replace `<`, `>`, `&`, `'`, `"` and `/` with HTML entities.
 **unescape**                           | replaces HTML encoded entities with `<`, `>`, `&`, `'`, `"` and `/`.
+**JSON**                               | convert to JSON using JSON.parse
 **ltrim**                              | trim characters from the left-side of the input.
 **rtrim**                              | trim characters from the right-side of the input.
+**removeHTML**                         | strip HTML codes from the string
 **removeSpace**                        | remove all white space from the string
 **removeLineBreak**                    | remove all line breaks from the string, \r\n\t, \n, \t\t
 **normalizeEmail**                     | canonicalizes an email address. (This doesn't validate that the input is an email, if you want to validate the email use `email` validator beforehand).
