@@ -214,7 +214,7 @@ Simple validator
 ```javascript
 const params = req.validate({
   'id': 'base64|number|boolean' // OR operation
-  'name': 'string',
+  'name': ['string', 'email'],  // AND operation
   'email?': 'email',            // OPTIONAL PARAMETER
   'zipcode': 'postalcode' 
 }); 
