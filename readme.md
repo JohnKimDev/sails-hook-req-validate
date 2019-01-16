@@ -399,7 +399,7 @@ Validator                               | Description
 **alphanumeric**                        | check if the string contains only letters and numbers.
 **ascii**                               | check if the string contains ASCII chars only.
 **array**                               | check if the value is array format. The validator uses lodash [_.isArray](https://lodash.com/docs/4.17.11#isArray) to validate the type.
-**any**                                 | any type, always return true
+**any**                                 | return true for any type except undefined.
 **base64**                              | check if a string is base64 encoded.
 **bolean**                              | check if a string is a boolean.
 **byteLength**                          | check if the string's length (in UTF-8 bytes) falls in a range.
