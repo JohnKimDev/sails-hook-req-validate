@@ -42,6 +42,8 @@ https://github.com/JohnKimDev/sails-hook-req-validate/issues/new
 * Can return data as a Promise or callback.
 
 ---
+---
+<br>
 
 ## Optional Global Setting (config/validate.js)
 You can create a `config/validate.js` file in TWO different ways. 
@@ -198,6 +200,7 @@ module.exports.validate = function(req, res) {
 ```
 
 ---
+<br>
 
 ## USAGE - Validator
 **sails-hook-req-validate** is very flexible and can be used in many different formats and configurations. 
@@ -216,7 +219,7 @@ const params = req.validate({
   'id': 'base64|number|boolean' // OR operation
   'name': ['string', 'email'],  // AND operation
   'email?': 'email',            // OPTIONAL parameter
-  'zipcode': 'postalcode'       // Required parameter
+  'zipcode': 'postalcode'
 }); 
 ```
 Combined validators
@@ -245,11 +248,10 @@ const params = req.validate({
 Custom type validation
 ```javascript
 const params = req.validate({
-  'role':  { customType: (val) => { return /^(user|admin|role)$/.test(val); }}
+  'role':  { validator: (val) => { return /^(user|admin|role)$/.test(val); }}
 }); 
-// FYI, you can simply the above code to `customType: (val) => /^(user|admin|role)$/.test(val);`
+// FYI, you can simply the above code to `validator: (val) => /^(user|admin|role)$/.test(val);`
 ```
-
 Custom converter (set **FUNCTION** to `converter`)
 ```javascript
 const params = req.validate({
@@ -267,19 +269,32 @@ const params = req.validate({
   'id':  ['int', { converter: false }]
 }); 
 ``` 
+<br>
+
+# Validator & Converter Options
+
+Option                                  | Description
+--------------------------------------- | --------------------------------------
+**enum**                                | ((array)) any combination of expected values
+**default**                             | ((string\|number\|boolean)) default value if the parameter is missing
+**converter**                           | ((array\|function\|boolean)) converter name as string or array of string can be used. You can pass `function` for custom converter. Or you can pass `false` as boolean to disable built-in converter for some validators.<br>You can also mixed types + functions in an array. 
+**validator**                          | ((function)) if you need a custom validator, use this option<br><br>@param `param` ((any)): passing parameter<br>@return ((boolean)): return `true` if valid, `false` otherwise.
+<br>
 ---
 
 # More Usage Examples With Options
-You can use with any of validator combination above.
-`req.validate(<TYPE_VALIDATOR>, <CALLBACK>)` or `req.validate(<TYPE_VALIDATOR>, <OPTION>, <CALLBACK>)`
+You can use with any of validator combination above.<br>
+`req.validate(<TYPE_VALIDATOR>, <CALLBACK>)`<br>or<br>`req.validate(<TYPE_VALIDATOR>, <OPTION>, <CALLBACK>)`
 
 ## USAGE (synchronous) - DIRECT 
+Only for `direct` method, ***`onErrorOutput`*** will be ignored! When an error occurs, ***false*** will be returned. 
 ```javascript
 const params = req.validate('id');
-if (params === false) {
+if (params === false) { 
   sails.log.error('The validation failed');
+} else {
+  sails.log.info('ID:', params.id);
 }
-sails.log.info('ID:', params.id);
 ```
 
 ## USAGE (asynchronous) - CALLBACK (error, params)
@@ -289,8 +304,9 @@ req.validate('id', (err, params) => {
   // callback
   if (err) {                    // err object is the output of `onErrorOutput`
     sails.log.error('The validation failed.', err.message); 
+  } else {
+    sails.log.info(params.id);   // callback data
   }
-  sails.log.info(params.id);   // callback data
 });
 ```
 
@@ -351,8 +367,9 @@ module.exports = {
 ```
 
 ---
+<br>
 
-## Options / Configurations
+## Setting Options / Configurations
 
 Option                                  | Description
 --------------------------------------- | --------------------------------------
@@ -368,6 +385,7 @@ Option                                  | Description
 **orInputErrorMessage**              | ((function)) output message for a parm input error message with OR opertation. The error message for each OR validation wil be combined<br><br>***default***: see above config/validation.js example<br><br>@param `orKey` ((string)): invalid OR param key. (ex: 'string\|email')<br>@param `orTypeMessage` ((string)): combined type error messages, see `message` for each type of the [validationType](https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js) file<br>@return ((string)): formated error messgae as string type
 
 ---
+<br>
 
 ## Validators
 
@@ -537,6 +555,10 @@ Validator                               | Description
 **UUIDv4**                              | check if the string is a UUID version 4
 **UUIDv5**                              | check if the string is a UUID version 5
 **uppercase**                           | check if the string is uppercase.
+<br>
+
+---
+<br>
 
 ## Converters
 
