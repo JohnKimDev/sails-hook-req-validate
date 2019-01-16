@@ -39,7 +39,7 @@ https://github.com/JohnKimDev/sails-hook-req-validate/issues/new
 * Added many new validator types and converters!!
 * Support custom validator and converter.
 * supports a **global configuration** file.
-* `sails-hook-reg-validator` can now return a Promise as well as callback. 
+* Can return data as a Promise or callback.
 
 ---
 
@@ -215,14 +215,14 @@ Simple validator
 const params = req.validate({
   'id': 'base64|number|boolean' // OR operation
   'name': ['string', 'email'],  // AND operation
-  'email?': 'email',            // OPTIONAL PARAMETER
-  'zipcode': 'postalcode' 
+  'email?': 'email',            // OPTIONAL parameter
+  'zipcode': 'postalcode'       // Required parameter
 }); 
 ```
 Combined validators
 ```javascript
 const params = req.validate({
-  'name': ['string', { default: 'John Doe' }],  // default parameter is missing 
+  'name': ['string', { default: 'John Doe' }],  // default value if missing 
   'email?': ['email', { converter: 'normalizeEmail' }],   // optional parameter & with converter 
   'type': { enum: ['user', 'admin', 'manager'], default: 'user' } 
 }); 
@@ -230,7 +230,7 @@ const params = req.validate({
 Combined validators as array
 ```javascript
 const params = req.validate([
-  { 'name': ['string', { default: 'John Doe' }] },  // default parameter is missing 
+  { 'name': ['string', { default: 'John Doe' }] },  // default value if missing 
   { 'email?': ['email', { converter: 'normalizeEmail' }] },   // optional parameter & with converter 
   { 'type': { enum: ['user', 'admin', 'manager'], default: 'user' } }
 ]); 
@@ -247,9 +247,8 @@ Custom type validation
 const params = req.validate({
   'role':  { customType: (val) => { return /^(user|admin|role)$/.test(val); }}
 }); 
-// FYI, you can simply the above code to `converter: (val) => /^(user|admin|role)$/.test(val);`
+// FYI, you can simply the above code to `customType: (val) => /^(user|admin|role)$/.test(val);`
 ```
-Some type validations have converters build-in. See https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js for each type has build-in converters.
 
 Custom converter (set **FUNCTION** to `converter`)
 ```javascript
@@ -259,11 +258,10 @@ const params = req.validate({
     return '(' + match[1] + ') ' + match[2] + '-' + match[3]; // (123) 456-7890
   }}
 }); 
-// FYI, you can simply the above code to `converter: (val) => /^(user|admin|role)$/.test(val);`
 ``` 
 Disable built-in converter (set **false** to `converter`)
 
-some type validations has built-in converter, you can disable them if you want
+some type validations have built-in converters, you can disable them if you want. See each type's converter field in https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js
 ```javascript
 const params = req.validate({
   'id':  ['int', { converter: false }]
@@ -271,59 +269,60 @@ const params = req.validate({
 ``` 
 ---
 
-## USAGE - CALLBACK
+# More Usage Examples With Options
 You can use with any of validator combination above.
 `req.validate(<TYPE_VALIDATOR>, <CALLBACK>)` or `req.validate(<TYPE_VALIDATOR>, <OPTION>, <CALLBACK>)`
 
+## USAGE (synchronous) - DIRECT 
 ```javascript
-req.validate('id', (data) => {
+const params = req.validate('id');
+if (params === false) {
+  sails.log.error('The validation failed');
+}
+sails.log.info('ID:', params.id);
+```
+
+## USAGE (asynchronous) - CALLBACK (error, params)
+
+```javascript
+req.validate('id', (err, params) => {
   // callback
-  sails.log.info(data);   // error or callback data
+  if (err) {                    // err object is the output of `onErrorOutput`
+    sails.log.error('The validation failed.', err.message); 
+  }
+  sails.log.info(params.id);   // callback data
 });
 ```
 
 ---
 
-## USAGE - PROMISE
+## USAGE (asynchronous) - PROMISE
 You can use the local configuration to enable promise return or use the global configuration.
 
+ES5 Promise
 ```javascript
 req.validate('id', {
   usePromise: true  
 })
-.then(data => {
+.then(params => {
   // callback
-  sails.log.info(data);   // error or callback data
+  sails.log.info(params.id); // forwarded parameters if the validation passes
 })
 .catch(err => {
-  sails.log.error(err);
+  sails.log.error(err);     // err object is the output of `onErrorOutput`
 });
 ```
-
+ES6 Async/Await Promise
 ```javascript
-const params = await = req.validate('id', {
-  usePromise: true  
-});
+try {
+  const params = await req.validate('id', {
+    usePromise: true        // or use the global setting
+  });
+  sails.log.info(params.id);
+catch (err) {
+  sails.log.error(err);     // err object is the output of `onErrorOutput`
+}  
 ```
----
-
-## USAGE - OPTION
-You can use with any of validator combination above.
-`req.validate(<TYPE_VALIDATOR>, <OPTION>)` or `req.validate(<TYPE_VALIDATOR>, <OPTION>, <CALLBACK>)`
-```javascript
-const params = req.validate('id', {
-  returnAllParams: false  // see options table for more information
-});
-```
-```javascript
-req.validate('id', {
-  returnAllParams: false  // see options table for more information
-},
-(data) => {
-  sails.log.info(data);   // error or callback data
-});
-```
-
 ---
 
 ## My Personal Favorite Usage Method
