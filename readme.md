@@ -428,7 +428,7 @@ Validator                               | Description
 **ISO31661Alpha3**                     | check if the string is a valid [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) officially assigned country code.
 **ISRC**                                | check if the string is a [ISRC](https://en.wikipedia.org/wiki/International_Standard_Recording_Code).
 **int**                                 | check if the string is an integer.<br><br>***Built-In Converter: int***
-**JSON**                                | check if the string is valid JSON(note: uses JSON.parse).<br><br>***Built-In Converter: JSON.parse***
+**JSON**                                | check if the string is valid JSON(note: uses JSON.parse).<br><br>***Built-In Converter: JSON5.parse***
 **JWT**                                 | check if the string is valid JWT token.
 **LatLong**                             | check if the string is a valid latitude-longitude coordinate in the format `lat,long` or `lat, long`.
 **lowercase**                           | check if the string is lowercase.
@@ -572,7 +572,7 @@ Converter                              | Description
 **date**                               | convert the input string to a date, or `null` if the input is not a date.
 **escape**                             | replace `<`, `>`, `&`, `'`, `"` and `/` with HTML entities.
 **unescape**                           | replaces HTML encoded entities with `<`, `>`, `&`, `'`, `"` and `/`.
-**JSON**                               | convert to JSON using JSON.parse
+**JSON**                               | convert to JSON using JSON5.parse
 **ltrim**                              | trim characters from the left-side of the input.
 **rtrim**                              | trim characters from the right-side of the input.
 **removeHTML**                         | strip HTML codes from the string
