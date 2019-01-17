@@ -109,7 +109,7 @@ module.exports.validate = {
   //   keys = keys || [];
   //   let isare = (keys.length > 1) ? 'are' : 'is';
   //   let s = (keys.length > 1) ? 's' : ''
-  //   return `The '${keys.join('\, \'')}' parameter${s} ${isare} required.`;
+  //   return `The "${keys.join('", "')}" parameter${s} ${isare} required.`;
   // },
 
   /***************************************************************************
@@ -119,7 +119,7 @@ module.exports.validate = {
   * [output] ((string)) 
   ***************************************************************************/
   // formatErrorMessage: function(key) {
-  //   return `The '${key}' parameter has an invalid format.`;
+  //   return `The "${key}" parameter has an invalid format.`;
   // },
 
   /***************************************************************************
@@ -132,7 +132,7 @@ module.exports.validate = {
   ***************************************************************************/
   // typeErrorMessage: function(key, typeMessage) {
   //   let a = (typeMessage && typeMessage.length) ? /[aeiouAEIOU]/.test(typeMessage.charAt(0)) ? 'an' : 'a' : '';
-  //   return `The '${key}' parameter should be ${a} ${typeMessage}.`;
+  //   return `The "${key}" parameter should be ${a} ${typeMessage}.`;
   // },
 
   /***************************************************************************
@@ -145,7 +145,7 @@ module.exports.validate = {
   ***************************************************************************/
   // inputErrorMessage: function(key, typeMessage) {
   //   let a = (typeMessage && typeMessage.length) ? /[aeiouAEIOU]/.test(typeMessage.charAt(0)) ? 'an' : 'a' : '';
-  //   return `The '${key}' parameter has an invalid input type` + (typeMessage ? `, it should be ${a} ${typeMessage}` : '') + '.';
+  //   return `The "${key}" parameter has an invalid input type` + (typeMessage ? `, it should be ${a} ${typeMessage}` : '') + '.';
   // },
 
   /***************************************************************************
