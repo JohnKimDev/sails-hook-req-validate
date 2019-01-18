@@ -10,7 +10,7 @@ describe('06 Numeric Test', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'numeric\' parameter is required.');
+      err.body.message.should.be.equal('The "numeric" parameter is required.');
       return done();
     });
   });
@@ -47,7 +47,7 @@ describe('06 Numeric Test', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'numeric\' parameter has an invalid input type, it should be a string contains only numbers (may contain +, -, or . symbol).');
+      err.body.message.should.be.equal('The "numeric" parameter has an invalid input type, it should be a string contains only numbers (may contain +, -, or . symbol).');
       return done();
     });
   });
@@ -60,7 +60,7 @@ describe('06 Numeric Test', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'numeric\' parameter has an invalid input type, it should be a string contains only numbers (may contain +, -, or . symbol).');
+      err.body.message.should.be.equal('The "numeric" parameter has an invalid input type, it should be a string contains only numbers (may contain +, -, or . symbol).');
       return done();
     });
   });
@@ -73,7 +73,7 @@ describe('06 Numeric Test', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'numeric\' parameter has an invalid input type, it should be a string contains only numbers (may contain +, -, or . symbol).');
+      err.body.message.should.be.equal('The "numeric" parameter has an invalid input type, it should be a string contains only numbers (may contain +, -, or . symbol).');
       return done();
     });
   });

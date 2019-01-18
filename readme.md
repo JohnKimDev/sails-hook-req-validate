@@ -31,7 +31,6 @@ https://github.com/JohnKimDev/sails-hook-req-validate/issues/new
 # BREAKING CHANGES IN V2.X.X (for all 1.x.x users)
 * The validation format has been changed. (See below for more details)
 * `date` validation and 'toDate' converter have been removed to due complex date string format validation for general match. Instead, 
-* `boolean`, `int`, and `float` validations will convert to each type after validation. Note that req.params for boolean/int/float values' types are string but from v2.0.0, by default, they will be converted to each validation's type after the validations. (Use newly added optional field `converter: false` if you want the original value)
 
 
 # NEW CHANGES IN V2.X.X
@@ -261,14 +260,6 @@ const params = req.validate({
   }}
 }); 
 ``` 
-Disable built-in converter (set **false** to `converter`)
-
-some type validations have built-in converters, you can disable them if you want. See each type's converter field in https://github.com/JohnKimDev/sails-hook-req-validate/blob/master/lib/validationTypes.js
-```javascript
-const params = req.validate({
-  'id':  ['int', { converter: false }]
-}); 
-``` 
 <br>
 
 # Validator & Converter Options
@@ -277,7 +268,7 @@ Option                                  | Description
 --------------------------------------- | --------------------------------------
 **enum**                                | ((array)) any combination of expected values
 **default**                             | ((string\|number\|boolean)) default value if the parameter is missing
-**converter**                           | ((array\|function\|boolean)) converter name as string or array of string can be used. You can pass `function` for custom converter. Or you can pass `false` as boolean to disable built-in converter for some validators.<br>You can also mixed types + functions in an array. 
+**converter**                           | ((array\|function)) converter name as string or array of string can be used. You can pass `function` for custom converter.<br>You can also mixed types + functions in an array. 
 **validator**                          | ((function)) if you need a custom validator, use this option<br><br>@param `param` ((any)): passing parameter<br>@return ((boolean)): return `true` if valid, `false` otherwise.
 <br>
 ---
@@ -349,7 +340,7 @@ module.exports.validate = {
   sendResponse: false,
   usePromise: true,
   returnAllParams: false,
-  onErrorOutput: (errMessage, invalidKeys) => new Error(errMessage)
+  onErrorOutput: (errMessage, invalidKeys) => errMessage
 };
 
 // in someController.js
@@ -410,7 +401,7 @@ Validator                               | Description
 **magnetURI**                           | check if the string is a [magnet uri format](https://en.wikipedia.org/wiki/Magnet_URI_scheme).
 **email**                               | check if the string is an valid email address.
 **FQDN**                                | check if the string is a fully qualified domain name (e.g. domain.com)
-**float**                               | check if the string is a float.<br><br>***Built-In Converter: float***
+**float**                               | check if the string is a float.
 **hash**                                | check if the string is a hash of type algorithm.<br/><br/>Algorithm is one of `['md4', 'md5', 'sha1', 'sha256', 'sha384', 'sha512', 'ripemd128', 'ripemd160', 'tiger128', 'tiger160', 'tiger192', 'crc32', 'crc32b']`
 **hexColor**                            | check if the string is a hexadecimal color.
 **hexadecimal**                         | check if the string is a hexadecimal number.
@@ -428,7 +419,7 @@ Validator                               | Description
 **ISO31661Alpha3**                     | check if the string is a valid [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) officially assigned country code.
 **ISRC**                                | check if the string is a [ISRC](https://en.wikipedia.org/wiki/International_Standard_Recording_Code).
 **int**                                 | check if the string is an integer.<br><br>***Built-In Converter: int***
-**JSON**                                | check if the string is valid JSON(note: uses JSON.parse).<br><br>***Built-In Converter: JSON5.parse***
+**JSON**                                | check if the string is valid JSON(note: uses JSON.parse).
 **JWT**                                 | check if the string is valid JWT token.
 **LatLong**                             | check if the string is a valid latitude-longitude coordinate in the format `lat,long` or `lat, long`.
 **lowercase**                           | check if the string is lowercase.
@@ -548,7 +539,7 @@ Validator                               | Description
 **postalCode-ZA**                       | check if the string is a postal code of ZA
 **postalCode-ZM**                       | check if the string is a postal code of ZM
 **surrogatePair**                       | check if the string contains any surrogate pairs chars.
-**string**                              | check if value is string. **BE CAUTIOUS** of using this type! May return invalid result. For the parameter values from a querystring and a URL path are always `STRING` type, using this validator type may have an unexpected result.<br><br>***Built-In Converter: string***
+**string**                              | check if value is string. **BE CAUTIOUS** of using this type! May return invalid result. For the parameter values from a querystring and a URL path are always `STRING` type, using this validator type may have an unexpected result.
 **URL**                                 | check if the string is an URL. allow protocols 'http', 'https', 'ftp'.
 **UUID**                                | check if the string is a UUID (version 3, 4 or 5).
 **UUIDv3**                              | check if the string is a UUID version 3
@@ -572,7 +563,8 @@ Converter                              | Description
 **date**                               | convert the input string to a date, or `null` if the input is not a date.
 **escape**                             | replace `<`, `>`, `&`, `'`, `"` and `/` with HTML entities.
 **unescape**                           | replaces HTML encoded entities with `<`, `>`, `&`, `'`, `"` and `/`.
-**JSON**                               | convert to JSON using JSON5.parse
+**JSON**                               | convert to JSON using JSON.parse
+**JSON5**                              | convert to JSON using JSON5.parse
 **ltrim**                              | trim characters from the left-side of the input.
 **rtrim**                              | trim characters from the right-side of the input.
 **removeHTML**                         | strip HTML codes from the string

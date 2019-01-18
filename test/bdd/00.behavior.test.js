@@ -10,7 +10,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter is required.');
+      err.body.message.should.be.equal('The "id" parameter is required.');
       return done();
     });
   });
@@ -23,7 +23,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter is required.');
+      err.body.message.should.be.equal('The "id" parameter is required.');
       return done();
     });
   });
@@ -62,7 +62,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter is required. The \'name\' parameter is required.');
+      err.body.message.should.be.equal('The "id" parameter is required. The "name" parameter is required.');
       return done();
     });
   });
@@ -75,7 +75,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter is required. The \'name\' parameter is required.');
+      err.body.message.should.be.equal('The "id" parameter is required. The "name" parameter is required.');
       return done();
     });
   });
@@ -88,7 +88,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter is required.');
+      err.body.message.should.be.equal('The "name" parameter is required.');
       return done();
     });
   });
@@ -101,7 +101,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter is required.');
+      err.body.message.should.be.equal('The "name" parameter is required.');
       return done();
     });
   });
@@ -190,7 +190,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter has an invalid input type, it should be an integer.');
+      err.body.message.should.be.equal('The "id" parameter has an invalid input type, it should be an integer.');
       return done();
     });
   });
@@ -209,7 +209,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter has an invalid input type, it should be an integer.');
+      err.body.message.should.be.equal('The "id" parameter has an invalid input type, it should be an integer.');
       return done();
     });
   });
@@ -228,7 +228,7 @@ describe('00 BehaviorController Test ::', function () {
       if (err) return done(err);
       res.statusCode.should.be.equal(200);
       body.should.be.instanceOf(Object);
-      body.id.should.be.equal(1);
+      body.id.should.be.equal('1');
       body.name.should.be.equal('joseba');
       body.surname.should.be.equal('legarreta');
       return done();
@@ -249,7 +249,7 @@ describe('00 BehaviorController Test ::', function () {
       if (err) return done(err);
       res.statusCode.should.be.equal(200);
       body.should.be.instanceOf(Object);
-      body.id.should.be.equal(1);
+      body.id.should.be.equal('1');
       body.name.should.be.equal('joseba');
       body.surname.should.be.equal('legarreta');
       return done();
@@ -302,7 +302,7 @@ describe('00 BehaviorController Test ::', function () {
     });
   });
 
-  it('should return age and height aren\'t the expected type', function (done) {
+  it('should return age and height aren"t the expected type', function (done) {
     var params = {
       id: 1,
       name: 'joseba',
@@ -317,12 +317,12 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'age\' parameter has an invalid input type, it should be an integer. The \'height\' parameter has an invalid input type, it should be a float number.');
+      err.body.message.should.be.equal('The "age" parameter has an invalid input type, it should be an integer. The "height" parameter has an invalid input type, it should be a float number.');
       return done();
     });
   });
 
-  it('should return age and height aren\'t the expected type async', function (done) {
+  it('should return age and height aren"t the expected type async', function (done) {
     var params = {
       id: 1,
       name: 'joseba',
@@ -337,7 +337,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'age\' parameter has an invalid input type, it should be an integer. The \'height\' parameter has an invalid input type, it should be a float number.');
+      err.body.message.should.be.equal('The "age" parameter has an invalid input type, it should be an integer. The "height" parameter has an invalid input type, it should be a float number.');
       return done();
     });
   });
@@ -359,7 +359,7 @@ describe('00 BehaviorController Test ::', function () {
       body.name.should.be.equal('JOSEBA');
       body.surname.should.be.equal('legarreta');
       body.age.should.be.equal(22);
-      body.height.should.be.equal(1.88);
+      body.height.should.be.equal('1.88');
       return done();
     });
   });
@@ -381,7 +381,7 @@ describe('00 BehaviorController Test ::', function () {
       body.name.should.be.equal('JOSEBA');
       body.surname.should.be.equal('legarreta');
       body.age.should.be.equal(22);
-      body.height.should.be.equal(1.88);
+      body.height.should.be.equal('1.88');
       return done();
     });
   });
@@ -501,7 +501,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter has an invalid input type, it should be a string.');
+      err.body.message.should.be.equal('The "name" parameter has an invalid input type, it should be a string.');
       return done();
     });
   });
@@ -515,7 +515,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter has an invalid input type, it should be a string.');
+      err.body.message.should.be.equal('The "name" parameter has an invalid input type, it should be a string.');
       return done();
     });
   });
@@ -540,7 +540,7 @@ describe('00 BehaviorController Test ::', function () {
       body.name.should.be.equal('joseba');
       body.surname.should.be.equal('LEGARRETA');
       body.height.should.be.equal(1.88);
-      body.age.should.be.equal(22);
+      body.age.should.be.equal('22');
       return done();
     });
   });
@@ -565,7 +565,7 @@ describe('00 BehaviorController Test ::', function () {
       body.name.should.be.equal('joseba');
       body.surname.should.be.equal('LEGARRETA');
       body.height.should.be.equal(1.88);
-      body.age.should.be.equal(22);
+      body.age.should.be.equal('22');
       return done();
     });
   });
@@ -650,7 +650,7 @@ describe('00 BehaviorController Test ::', function () {
     });
   });
 
-  it('should return 400 error age and height aren\'t valid type', function (done) {
+  it('should return 400 error age and height aren"t valid type', function (done) {
     var params = {
       id: 1,
       height: '1,88',
@@ -664,13 +664,13 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      var msg = 'The \'height\' parameter has an invalid input type, it should be a float number. The \'age\' parameter has an invalid input type, it should be an integer.';
+      var msg = 'The "height" parameter has an invalid input type, it should be a float number. The "age" parameter has an invalid input type, it should be an integer.';
       err.body.message.should.be.equal(msg);
       return done();
     });
   });
 
-  it('should return 400 error age and height aren\'t valid type async', function (done) {
+  it('should return 400 error age and height aren"t valid type async', function (done) {
     var params = {
       id: 1,
       height: '1,88',
@@ -684,7 +684,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      var msg = 'The \'height\' parameter has an invalid input type, it should be a float number. The \'age\' parameter has an invalid input type, it should be an integer.';
+      var msg = 'The "height" parameter has an invalid input type, it should be a float number. The "age" parameter has an invalid input type, it should be an integer.';
       err.body.message.should.be.equal(msg);
       return done();
     });
@@ -703,7 +703,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      var msg = 'The \'id\' parameter is required. The \'age\' parameter has an invalid input type, it should be an integer.';
+      var msg = 'The "id" parameter is required. The "age" parameter has an invalid input type, it should be an integer.';
       err.body.message.should.be.equal(msg);
       return done();
     });
@@ -722,7 +722,7 @@ describe('00 BehaviorController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      var msg = 'The \'id\' parameter is required. The \'age\' parameter has an invalid input type, it should be an integer.';
+      var msg = 'The "id" parameter is required. The "age" parameter has an invalid input type, it should be an integer.';
       err.body.message.should.be.equal(msg);
       return done();
     });
@@ -872,7 +872,7 @@ describe('00 BehaviorController Test ::', function () {
     });
   });
 
-  it('should return 400 error age and height aren\'t valid type', function (done) {
+  it('should return 400 error age and height aren"t valid type', function (done) {
     var params = {
       id: 1,
       height: '1,88',
@@ -891,7 +891,7 @@ describe('00 BehaviorController Test ::', function () {
     });
   });
 
-  it('should return 400 error age and height aren\'t valid type async', function (done) {
+  it('should return 400 error age and height aren"t valid type async', function (done) {
     var params = {
       id: 1,
       height: '1,88',

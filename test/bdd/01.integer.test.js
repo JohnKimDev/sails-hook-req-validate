@@ -10,7 +10,7 @@ describe('01 IntegerController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter is required.');
+      err.body.message.should.be.equal('The "id" parameter is required.');
       return done();
     });
   });
@@ -22,7 +22,7 @@ describe('01 IntegerController Test ::', function () {
     }, { id: '1' }, function (err, res, body) {
       if (err) return done(err);
       res.statusCode.should.be.equal(200);
-      body.id.should.be.equal(1);
+      body.id.should.be.equal('1');
       return done();
     });
   });
@@ -47,7 +47,7 @@ describe('01 IntegerController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter has an invalid input type, it should be an integer.');
+      err.body.message.should.be.equal('The "id" parameter has an invalid input type, it should be an integer.');
       return done();
     });
   });
@@ -60,7 +60,7 @@ describe('01 IntegerController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'id\' parameter has an invalid input type, it should be an integer.');
+      err.body.message.should.be.equal('The "id" parameter has an invalid input type, it should be an integer.');
       return done();
     });
   });

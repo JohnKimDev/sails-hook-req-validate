@@ -10,7 +10,7 @@ describe('04 EmailController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'email\' parameter is required.');
+      err.body.message.should.be.equal('The "email" parameter is required.');
       return done();
     });
   });
@@ -59,7 +59,7 @@ describe('04 EmailController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'email\' parameter has an invalid input type, it should be a valid email.');
+      err.body.message.should.be.equal('The "email" parameter has an invalid input type, it should be a valid email.');
       return done();
     });
   });
@@ -72,7 +72,7 @@ describe('04 EmailController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'email\' parameter has an invalid input type, it should be a valid email.');
+      err.body.message.should.be.equal('The "email" parameter has an invalid input type, it should be a valid email.');
       return done();
     });
   });
@@ -85,7 +85,7 @@ describe('04 EmailController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'email\' parameter has an invalid input type, it should be a valid email.');
+      err.body.message.should.be.equal('The "email" parameter has an invalid input type, it should be a valid email.');
       return done();
     });
   });
@@ -98,7 +98,7 @@ describe('04 EmailController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'email\' parameter has an invalid input type, it should be a valid email.');
+      err.body.message.should.be.equal('The "email" parameter has an invalid input type, it should be a valid email.');
       return done();
     });
   });

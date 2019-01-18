@@ -10,7 +10,7 @@ describe('05 UrlController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'url\' parameter is required.');
+      err.body.message.should.be.equal('The "url" parameter is required.');
       return done();
     });
   });
@@ -71,7 +71,7 @@ describe('05 UrlController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'url\' parameter has an invalid input type, it should be a valid URL string.');
+      err.body.message.should.be.equal('The "url" parameter has an invalid input type, it should be a valid URL string.');
       return done();
     });
   });
@@ -84,7 +84,7 @@ describe('05 UrlController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'url\' parameter has an invalid input type, it should be a valid URL string.');
+      err.body.message.should.be.equal('The "url" parameter has an invalid input type, it should be a valid URL string.');
       return done();
     });
   });
@@ -97,7 +97,7 @@ describe('05 UrlController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'url\' parameter has an invalid input type, it should be a valid URL string.');
+      err.body.message.should.be.equal('The "url" parameter has an invalid input type, it should be a valid URL string.');
       return done();
     });
   });
@@ -106,11 +106,11 @@ describe('05 UrlController Test ::', function () {
     sails.request({
       url: '/url',
       method: 'post'
-    }, { url: 'no!that\'s!not!a!web.com' }, function (err, res, body) {
+    }, { url: 'no!that"s!not!a!web.com' }, function (err, res, body) {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'url\' parameter has an invalid input type, it should be a valid URL string.');
+      err.body.message.should.be.equal('The "url" parameter has an invalid input type, it should be a valid URL string.');
       return done();
     });
   });

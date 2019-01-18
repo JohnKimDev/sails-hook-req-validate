@@ -10,7 +10,7 @@ describe('06 AlphanumericController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'alpha\' parameter is required.');
+      err.body.message.should.be.equal('The "alpha" parameter is required.');
       return done();
     });
   });
@@ -71,7 +71,7 @@ describe('06 AlphanumericController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'alpha\' parameter has an invalid input type, it should be a string contains only letters and numbers.');
+      err.body.message.should.be.equal('The "alpha" parameter has an invalid input type, it should be a string contains only letters and numbers.');
       return done();
     });
   });
@@ -84,7 +84,7 @@ describe('06 AlphanumericController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'alpha\' parameter has an invalid input type, it should be a string contains only letters and numbers.');
+      err.body.message.should.be.equal('The "alpha" parameter has an invalid input type, it should be a string contains only letters and numbers.');
       return done();
     });
   });

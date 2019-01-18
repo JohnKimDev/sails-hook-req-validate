@@ -10,7 +10,7 @@ describe('03 StringController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter is required.');
+      err.body.message.should.be.equal('The "name" parameter is required.');
       return done();
     });
   });
@@ -35,7 +35,7 @@ describe('03 StringController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter has an invalid input type, it should be a string.');
+      err.body.message.should.be.equal('The "name" parameter has an invalid input type, it should be a string.');
       return done();
     });
   });
@@ -48,7 +48,7 @@ describe('03 StringController Test ::', function () {
       err.should.be.instanceOf(Object);
       err.status.should.be.equal(400);
       err.body.should.be.instanceOf(Object);
-      err.body.message.should.be.equal('The \'name\' parameter has an invalid input type, it should be a string.');
+      err.body.message.should.be.equal('The "name" parameter has an invalid input type, it should be a string.');
       return done();
     });
   });
