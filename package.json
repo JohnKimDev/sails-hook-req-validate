@@ -30,7 +30,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:JohnKimDev/sails-hook-req-validate.git"
+    "url": "git@github.com:gramireza/sails-hook-req-validate.git"
   },
   "sails": {
     "isHook": true
