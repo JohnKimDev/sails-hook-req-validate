@@ -343,8 +343,11 @@ module.exports.validate = {
 module.exports = {
   index: async (req, res) => {
     try {
-      const params = await req.validate('id');
-      // process
+      const params = await req.validate({
+        'id': 'string',
+        'name': 'string'
+      });
+      console.log(params.id, params.name);
       return res.ok();
     } catch (err) {
       return res.serverError(err);
