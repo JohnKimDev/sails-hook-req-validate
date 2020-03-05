@@ -246,13 +246,7 @@ const params = req.validate({
 }); 
 // not a good example but I hope you get the idea
 ```
-Custom type validation
-```javascript
-const params = req.validate({
-  'role':  { validator: (val) => { return /^(user|admin|role)$/.test(val); }}
-}); 
-// FYI, you can simply the above code to `validator: (val) => /^(user|admin|role)$/.test(val);`
-```
+
 Custom converter (set **FUNCTION** to `converter`)
 ```javascript
 const params = req.validate({
