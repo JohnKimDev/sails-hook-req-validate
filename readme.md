@@ -27,19 +27,6 @@ This is it! Once you `npm install` the hook will be automatically activated. How
 Please feel free to leave any comment and suggestion .
 https://github.com/JohnKimDev/sails-hook-req-validate/issues/new
 
-
-# BREAKING CHANGES IN V2.X.X (for all 1.x.x users)
-* The validation format has been changed. (See below for more details)
-* `date` validation and 'toDate' converter have been removed to due complex date string format validation for general match. Instead, 
-
-
-# NEW CHANGES IN V2.X.X
-* All codes have been rewritten and all tests have been updated.
-* Added many new validator types and converters!!
-* Support custom validator and converter.
-* supports a **global configuration** file.
-* Can return data as a Promise or callback.
-
 ---
 ---
 <br>
@@ -203,6 +190,21 @@ module.exports.validate = function(req, res) {
 
 ## USAGE - Validator
 **sails-hook-req-validate** is very flexible and can be used in many different formats and configurations. 
+
+---
+*New in 2.8.x*
+
+Function Validation
+
+```javascript
+const params = req.validate({
+  'evenNum': (val) => { return (val % 2 === 0); }   // you can also use a function instead of an arrow function
+}); 
+
+// PRO TIP: (val) => { return (val % 2 === 0); } can be shorten to (val) => (val % 2 === 0) 
+```
+
+---
 
 Single parameter
 ```javascript
