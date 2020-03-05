@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-req-validate",
-  "version": "2.7.1",
+  "version": "2.8.0",
   "description": "Ultimate Request Validator Hook for SailsJS",
   "keywords": [
     "sails-hook",
