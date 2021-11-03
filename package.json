@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "json5": "latest",
-    "validator": "^10.11.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "sails": ">=1.0.0",
